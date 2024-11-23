@@ -27,13 +27,6 @@ lint-fmt = [
     "ruff>=0.8.0",
 ]
 
-[tool.mypy]
-python_version = 3.12
-warn_unused_ignores = true
-warn_no_return = true
-warn_unreachable = true
-disallow_untyped_calls = true
-
 [tool.ruff]
 exclude = [
     ".bzr",
@@ -71,3 +64,20 @@ target-version = "py312"
 quote-style = "double"
 indent-style = "space"
 line-ending = "auto"
+
+[tool.mypy]
+python_version = 3.12
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+disallow_untyped_calls = true
+
+[[tool.mypy.overrides]]
+module = [
+    "pandas.*",
+    "plotly.*",
+    "dash.*",
+    "dash_bootstrap_components.*",
+    "gunicorn.app.base.*",
+]
+ignore_missing_imports = true
