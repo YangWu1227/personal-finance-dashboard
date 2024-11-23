@@ -1,4 +1,4 @@
-from typing import Dict, Tuple
+from typing import Dict, Tuple, Union
 
 
 import dash
@@ -91,10 +91,10 @@ app.layout = html.Div(
 )
 def toggle_sidebar(
     n,
-    sidebar_style: Dict[str, str],
+    sidebar_style: Dict[str, Union[str, int]],
     below_nav_style: Dict[str, str],
     navbar_style: Dict[str, str],
-) -> Tuple[Dict[str, str], Dict[str, str], Dict[str, str]]:
+) -> Tuple[Dict[str, Union[str, int]], Dict[str, str], Dict[str, str]]:
     """
     Callback to toggle the sidebar and adjust navbar and content accordingly.
 
@@ -111,7 +111,7 @@ def toggle_sidebar(
 
     Returns
     -------
-    Tuple[Dict[str, str], Dict[str, str], Dict[str, str]]
+    Tuple[Dict[str, Union[str, int]], Dict[str, str], Dict[str, str]]
         Tuple containing the new styles for the sidebar, container below navbar, and navbar.
     """
     if n and (n % 2 == 1):  # If the number of clicks is odd, hide the sidebar
@@ -131,7 +131,7 @@ def toggle_sidebar(
             "width": "16rem",
             "padding": "2rem 1rem",
             "background-color": "#f8f9fa",
-        }  # type: ignore
+        }
         below_nav_style = {
             "margin-left": "16rem",
             "margin-right": "2rem",

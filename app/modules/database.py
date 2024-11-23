@@ -66,7 +66,7 @@ def read_spending_data(db_path: str) -> pd.DataFrame:
     return spending_data
 
 
-def main():
+def main() -> int:
     logger = logging.getLogger(__name__)
     if not any(
         isinstance(handler, logging.StreamHandler) for handler in logger.handlers
